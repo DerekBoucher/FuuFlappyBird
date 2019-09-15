@@ -1,6 +1,14 @@
 # Set SDL2 DLL Path
 import os
-os.environ["PYSDL2_DLL_PATH"] = os.getcwd()+"\\..\\lib"
+import platform
+
+if platform.system() == "Darwin":
+    os.environ["PYSDL2_DLL_PATH"] = os.getcwd() + "/lib/MacOS"
+    pass
+
+if platform.system() == "Windows":
+    os.environ["PYSDL2_DLL_PATH"] = os.getcwd()+"\\..\\lib\\Windows"
+    pass
 
 # Imports
 import sys
