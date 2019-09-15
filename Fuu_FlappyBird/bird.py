@@ -25,7 +25,6 @@ class bird(entity):
         self.surface.h = 60
         self.acc = 5.0
         self.vel = 0.0
-        self.start()
         pass
 
     def run(self):

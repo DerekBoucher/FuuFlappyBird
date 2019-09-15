@@ -29,11 +29,14 @@ class scene(entity):
     def process_events(self):
         if self.type == "game":
             while sdl2.SDL_PollEvent(ctypes.byref(self.event)) != 0:
-                if self.event.type == sdl2.SDL_QUIT: 
+                if self.event.type == sdl2.SDL_QUIT:
                     self.stop_entities()
                     break
                 if self.event.type == sdl2.SDL_KEYDOWN:
                     if self.event.key.keysym.sym == sdl2.SDLK_SPACE:
+                        if not self.entities[1].is_alive():
+                            self.entities[1].start()
+                            pass
                         self.entities[1].vel -= 2.0
                         pass
                 pass
