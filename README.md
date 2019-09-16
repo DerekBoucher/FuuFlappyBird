@@ -18,4 +18,4 @@
 
     SPACE -> Fly Up
 
-![](Images/ss.PNG)
+![](assets/ss.png)
