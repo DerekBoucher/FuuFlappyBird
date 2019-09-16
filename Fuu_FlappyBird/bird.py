@@ -7,7 +7,8 @@ from time import sleep
 
 image_path = b"../assets/bird.png"
 
-class bird(entity):
+
+class Bird(entity):
 
     def __init__(self, rend):
         entity.__init__(self)
@@ -24,10 +25,8 @@ class bird(entity):
     def run(self):
         self.Running = True
         while self.Running:
-            self.vel        += self.acc * 0.01
-            self.surface.y  += int(self.vel)
+            self.vel += self.acc * 0.01
+            self.surface.y += int(self.vel)
             sleep(0.01)
             pass
         pass
-
-

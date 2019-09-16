@@ -5,6 +5,7 @@ import sdl2.sdlimage
 import ctypes
 from threading import Thread
 
+
 class entity(Thread):
     def __init__(self):
         Thread.__init__(self)
@@ -13,7 +14,7 @@ class entity(Thread):
         self.Running = False
         pass
 
-    def Render(self, rend):
+    def render(self, rend):
         sdl2.SDL_RenderCopy(rend, self.texture, None, ctypes.byref(self.surface))
         pass
 

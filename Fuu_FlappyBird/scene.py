@@ -2,13 +2,14 @@
 import sdl2.ext
 import sdl2
 import ctypes
-from bird import bird
+from bird import Bird
 from entity import entity
 from sdl2.sdlimage import IMG_Load
 import time
 
 background_img = b"../assets/background.png"
 floor_img = b"../assets/floor.png"
+
 
 class scene(entity):
 
@@ -41,10 +42,10 @@ class scene(entity):
     def init_as_game(self, rend):
         self.type = "game"
         self.texture = sdl2.SDL_CreateTextureFromSurface(rend, IMG_Load(background_img))
-        self.surface = sdl2.SDL_Rect(0,0,1575,500)
+        self.surface = sdl2.SDL_Rect(0, 0, 1575, 500)
         self.floor.texture = sdl2.SDL_CreateTextureFromSurface(rend, IMG_Load(floor_img))
-        self.floor.surface = sdl2.SDL_Rect(0,490,1200,150)
-        player = bird(rend)
+        self.floor.surface = sdl2.SDL_Rect(0, 490, 1200, 150)
+        player = Bird(rend)
         self.entities = [self, self.floor, player]
         self.start()
         pass
@@ -76,5 +77,3 @@ class scene(entity):
             if i.is_alive():
                 i.join()
         pass
-
-
