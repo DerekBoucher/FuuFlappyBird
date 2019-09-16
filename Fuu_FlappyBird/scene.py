@@ -31,10 +31,10 @@ class scene(entity):
                     break
                 if self.event.type == sdl2.SDL_KEYDOWN:
                     if self.event.key.keysym.sym == sdl2.SDLK_SPACE:
-                        if not self.entities[1].is_alive():
-                            self.entities[1].start()
+                        if not self.entities[2].is_alive():
+                            self.entities[2].start()
                             pass
-                        self.entities[1].vel -= 2.0
+                        self.entities[2].vel -= 2.0
                         pass
                 pass
         if self.type == "menu":
