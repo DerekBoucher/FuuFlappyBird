@@ -11,10 +11,7 @@ if platform.system() == "Windows":
     pass
 
 # Imports
-import sys
-import sdl2.ext
 import sdl2
-import ctypes
 from bird import bird
 from render_module import Perform_Rendering
 from scene import scene

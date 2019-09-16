@@ -2,8 +2,6 @@
 import sdl2
 import sdl2.ext
 from sdl2.sdlimage import IMG_Load
-import sys
-import ctypes
 from entity import entity
 from time import sleep
 

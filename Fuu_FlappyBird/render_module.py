@@ -1,9 +1,6 @@
 # Imports
-import sys
 import sdl2.ext
 import sdl2
-import ctypes
-import bird
 
 # Main Rendering Function, performs rendering using painter's algorithm,
 # where the farthest element (0th element in list) is rendered fisrt and everything

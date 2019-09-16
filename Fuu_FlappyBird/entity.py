@@ -2,10 +2,8 @@
 import sdl2
 import sdl2.ext
 import sdl2.sdlimage
-import sys
 import ctypes
 from threading import Thread
-import threading
 
 class entity(Thread):
     def __init__(self):

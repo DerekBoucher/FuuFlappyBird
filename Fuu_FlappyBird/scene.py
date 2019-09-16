@@ -1,10 +1,7 @@
 # Imports
-import sys
 import sdl2.ext
 import sdl2
 import ctypes
-from threading import Thread
-import threading
 from bird import bird
 from entity import entity
 from sdl2.sdlimage import IMG_Load
