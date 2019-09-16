@@ -1,7 +1,3 @@
-# Set SDL2 DLL Path
-import os
-os.environ["PYSDL2_DLL_PATH"] = os.getcwd()+"\\..\\lib"
-
 # Imports
 import sdl2
 import sdl2.ext

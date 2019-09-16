@@ -1,7 +1,3 @@
-# Set SDL2 DLL Path
-import os
-os.environ["PYSDL2_DLL_PATH"] = os.getcwd()+"\\..\\lib"
-
 # Imports
 import sys
 import sdl2.ext
@@ -15,6 +11,7 @@ from sdl2.sdlimage import IMG_Load
 import time
 
 background_img = b"../assets/background.png"
+floor_img = b"../assets/floor.png"
 
 class scene(entity):
 
@@ -23,9 +20,9 @@ class scene(entity):
         self.event = sdl2.SDL_Event()
         self.type = None
         self.entities = None
+        self.floor = entity()
         pass
 
-    # How to Handle events depending on Scene type
     def process_events(self):
         if self.type == "game":
             while sdl2.SDL_PollEvent(ctypes.byref(self.event)) != 0:
@@ -47,14 +44,15 @@ class scene(entity):
     def init_as_game(self, rend):
         self.type = "game"
         self.texture = sdl2.SDL_CreateTextureFromSurface(rend, IMG_Load(background_img))
-        self.surface = sdl2.SDL_Rect(0,0,1575,600)
+        self.surface = sdl2.SDL_Rect(0,0,1575,500)
+        self.floor.texture = sdl2.SDL_CreateTextureFromSurface(rend, IMG_Load(floor_img))
+        self.floor.surface = sdl2.SDL_Rect(0,490,1200,150)
         player = bird(rend)
-        self.entities = [self, player]
+        self.entities = [self, self.floor, player]
         self.start()
         pass
 
     def init_as_menu(self, rend):
-        # Set Type
         self.type = "menu"
         pass
 
@@ -63,8 +61,12 @@ class scene(entity):
         while self.Running:
             if self.type == "game":
                 self.surface.x -= 1
+                self.floor.surface.x -= 2
                 if self.surface.x < -700:
                     self.surface.x = 0
+                    pass
+                if self.floor.surface.x < -578:
+                    self.floor.surface.x = 0
                     pass
                 time.sleep(0.0175)
                 pass
@@ -74,7 +76,8 @@ class scene(entity):
     def stop_entities(self):
         for i in self.entities:
             i.stop()
-            i.join()
+            if i.is_alive():
+                i.join()
         pass
 
 
