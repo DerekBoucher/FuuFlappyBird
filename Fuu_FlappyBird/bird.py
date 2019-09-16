@@ -7,6 +7,7 @@ from time import sleep
 
 image_path = b"../assets/bird.png"
 
+
 class Bird(entity):
 
     def __init__(self, rend):
