@@ -10,6 +10,5 @@ def perform_rendering(rend, entities=[]):
     for entity in entities:
         entity.render(rend)
         pass
-
     sdl2.SDL_RenderPresent(rend)
     pass

@@ -12,7 +12,7 @@ if platform.system() == "Windows":
 
 # Imports
 import sdl2
-from bird import Bird
+from bird import bird
 from render_module import perform_rendering
 from scene import scene
 
@@ -32,9 +32,6 @@ window = sdl2.SDL_CreateWindow(winName,
 renderer = sdl2.SDL_CreateRenderer(window,
                                    -1,
                                    sdl2.SDL_RENDERER_ACCELERATED | sdl2.SDL_RENDERER_PRESENTVSYNC)
-
-# Instantiate Game Entities
-player = Bird(renderer)
 
 # Instantiate Scenes
 gameScene = scene()
