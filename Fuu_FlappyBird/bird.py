@@ -6,6 +6,8 @@ from entity import entity
 from time import sleep
 
 image_path = b"../assets/bird.png"
+birdWidth = 100
+birdHeight = 60
 
 
 class bird(entity):
@@ -13,7 +15,7 @@ class bird(entity):
     def __init__(self, rend):
         entity.__init__(self)
         self.texture = sdl2.SDL_CreateTextureFromSurface(rend, IMG_Load(image_path))
-        self.surface = sdl2.SDL_Rect(80, 270, 100, 60)
+        self.surface = sdl2.SDL_Rect(80, 270, birdWidth, birdHeight)
         self.acc = 7.0
         self.vel = 0.0
         pass

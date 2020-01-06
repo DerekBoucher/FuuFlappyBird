@@ -12,7 +12,6 @@ if platform.system() == "Windows":
 
 # Imports
 import sdl2
-from bird import bird
 from render_module import perform_rendering
 from scene import scene
 
@@ -43,7 +42,8 @@ sceneList = [gameScene, menuScene]
 # Scene Indexes
 game_scene_index = 0
 menu_scene_index = 1
-current_scene_index = game_scene_index
+current_scene_index = menu_scene_index
+sceneList[current_scene_index].Pause = False
 
 # Clear Screen to Black
 sdl2.SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255)
@@ -54,11 +54,21 @@ while sceneList[current_scene_index].Running:
     # Process Events
     sceneList[current_scene_index].process_events()
 
+    if sceneList[current_scene_index].RequestChange:
+        sceneList[current_scene_index].RequestChange = False
+        if current_scene_index == menu_scene_index:
+            current_scene_index = game_scene_index
+            sceneList[current_scene_index].init_as_game(None)
+        else:
+            current_scene_index = menu_scene_index
+
     # Render Graphics
     perform_rendering(renderer, sceneList[current_scene_index].entities)
     pass
 
 # Clean up
+for scene in sceneList:
+    scene.stop_entities()
 sdl2.SDL_DestroyRenderer(renderer)
 sdl2.SDL_DestroyWindow(window)
 sdl2.SDL_Quit()
